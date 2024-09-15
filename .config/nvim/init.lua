@@ -366,16 +366,22 @@ require('lazy').setup {
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+      local vimgrep_arguments = { unpack(require('telescope.config').values.vimgrep_arguments) }
+      table.insert(vimgrep_arguments, '--hidden')
+
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          vimgrep_arguments = vimgrep_arguments,
+          file_ignore_patterns = { '.git/' },
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -690,6 +696,7 @@ require('lazy').setup {
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
@@ -729,6 +736,7 @@ require('lazy').setup {
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
     },
     config = function()
       -- See `:help cmp`
@@ -805,6 +813,7 @@ require('lazy').setup {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'buffer' },
         },
       }
     end,
@@ -909,6 +918,7 @@ require('lazy').setup {
       },
       keymaps = {
         ['<C-l>'] = false, -- Fix collision with vim-tmux-navigator
+        ['<C-h>'] = false,
       },
     },
     init = function()
