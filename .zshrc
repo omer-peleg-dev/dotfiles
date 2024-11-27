@@ -30,6 +30,7 @@ alias cat="bat"
 alias rc="./scripts/run_compose.sh"
 alias dc="docker-compose down --remove-orphans"
 alias nsd="npm run start:docker"
+alias ns="npm run start"
 
 source '/usr/share/zsh-antidote/antidote.zsh'
 antidote load
