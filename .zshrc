@@ -31,6 +31,7 @@ alias rc="./scripts/run_compose.sh"
 alias dc="docker-compose down --remove-orphans"
 alias nsd="npm run start:docker"
 alias ns="npm run start"
+alias docker_deep_clean="sudo rm -rf /var/lib/docker"
 
 source '/usr/share/zsh-antidote/antidote.zsh'
 antidote load
@@ -42,5 +43,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 neofetch
+# pokemonshow
 . "/home/omer/.deno/env"
 export PATH=$PATH:/home/omer/.spicetify
